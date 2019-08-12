@@ -9,9 +9,9 @@ Students will be able to register and log into the app. They will then be taken 
 Technologies: 
 Technologies to be used include Auth, Ruby on Rails, and React.
 
-ERD: 
+ERD: See files in repo.
 
-Wireframes: 
+Wireframes: See files in repo.
 
 M.V.P
 My MVP would be to have a working app in which a user can log in, create a group, view all groups created by other users, add a group to their groups, post to the group, and delete posts from the group. 
