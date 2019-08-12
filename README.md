@@ -1,1 +1,2 @@
-# project4
+# Project 4
+Study Group
