@@ -2,32 +2,119 @@
   text-align: center;
 }
 
-.App-logo {
-  animation: App-logo-spin infinite 20s linear;
-  height: 40vmin;
-  pointer-events: none;
-}
+/* Nav Bar */
 
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
+#nav-bar a{
+  text-decoration: none;
   color: white;
+  justify-content: space-between;
+  font-size: 25px;
+  font-family: 'Ubuntu Condensed', sans-serif;
 }
 
-.App-link {
-  color: #61dafb;
+#nav-bar {
+  display: flex;
+  width: 100%;
+  justify-content: space-around;
+  padding-top: 15px;
+  padding-bottom: 15px;
+  background-color: rgb(84, 179, 230);
+  position: fixed;
+  top: 0;
 }
 
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+/* Header Section */
+
+.header {
+  display: flex;
+  margin-top: 30px;
+  width: 100%;
+  border-bottom: 1px solid rgb(28, 28, 128); 
+  background-color: white;
+  justify-content: center;
+  
+}
+
+.header h1{
+  padding-top: 15px;
+  padding-left: 15px;
+  font-size: 90px;
+  font-family: 'Ubuntu Condensed', sans-serif;
+  color: rgb(28, 28, 128);
+  text-align: center;
+  
+}
+
+.header img {
+  height: 190px;
+  padding-top: 30px; 
+}
+
+
+/* All Groups Section */
+.AllGroups h3 {
+  font-family: 'Ubuntu Condensed', sans-serif;
+  color: rgb(28, 28, 128);
+  font-size: 30px;
+}
+
+.AllGroups p, button {
+  font-family: 'Ubuntu Condensed', sans-serif;
+  font-size: 20px;
+}
+
+.allGroups {
+  align-content: center;
+  justify-content: center;
+
+}
+
+.aGroup {
+  background-color: lightblue;
+  margin-left: 35%;
+  margin-right: 35%;
+  padding-bottom: 15px;
+  
+}
+
+.aGroup h3 {
+  padding-top: 15px; 
+}
+
+/* Home Page */
+.homeForm form {
+  display: inline-block;
+  background-color: rgb(84, 179, 230);
+  padding-left: 45px;
+  padding-right: 45px;
+  margin-top: 15px;
+}
+
+.homeForm p {
+  font-family: 'Ubuntu Condensed', sans-serif;
+  color: white;
+  font-size: 20px;
+}
+
+.homeForm input {
+  padding: 7px;
+}
+
+.homeForm button {
+  display: flex;
+  margin-top: 10px;
+  margin-bottom: 35px;
+}
+
+.homeForm h3 {
+  margin-top: 35px; 
+  font-family: 'Ubuntu Condensed', sans-serif;
+  font-size: 30px; 
+
+}
+
+
+/* View Group Section */
+.grouptitle {
+  background-color: lightblue;
 }

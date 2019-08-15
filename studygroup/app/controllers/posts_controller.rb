@@ -14,14 +14,19 @@ class PostsController < ApplicationController
   def create
     @post = Post.new(post_params)
     if @post.save
-    redirect_to @post
+      render json: @post
     end
   end
 
   def update
     @post = Post.find(params[:id])
-    if @post.update(post_params)
-      render json: @post, status: :ok
+    if params[:group_id]
+      @group = Group.find(params[:group_id])
+      @group.post << @post
+      render json: @post
+    else
+      if @post.update(post_params)
+        render json: @post, status: :ok
     else
       render json: { errors: @post.errors }, status: :unprocessable_entity
     end

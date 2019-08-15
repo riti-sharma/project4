@@ -14,28 +14,39 @@ class GroupsController < ApplicationController
   def create
     @group = Group.new(group_params)
     if @group.save
-    redirect_to @group
+      render json: @group
     end
   end
-
+  
   def update
     @group = Group.find(params[:id])
-    if @group.update(group_params)
-      render json: @group, status: :ok
+    if params[:user_id]
+      @user = User.find(params[:user_id])
+      @user.groups << @group
+      render json: @group
     else
-      render json: { errors: @group.errors }, status: :unprocessable_entity
+      if @group.update(group_params)
+        render json: @group, status: :ok
+      else
+        render json: { errors: @group.errors }, status: :unprocessable_entity
+      end
     end
   end
 
   def destroy
     @group = Group.find(params[:id])
-    @group.destroy
+    if params[:user_id]
+      @user = User.find(params[:user_id])
+      @user.groups.delete(@group)
+    else
+      @group.destroy
+    end
     head 204
   end
 
   private
   def group_params
-    params.require(:group).permit(:name, :description, :user_id)
+    params.require(:group).permit(:name, :description, :user_id, :subject)
   end
 
 

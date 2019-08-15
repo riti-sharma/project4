@@ -1,21 +1,22 @@
 class UsersController < ApplicationController
+  
   before_action :authorize_request, except: :create
 
   def index
     @users = User.all
-    render json: @users, status: :ok
+    render json: @users, include: [:groups, :posts], status: :ok
   end
 
 
   def show
     @user = User.find(params[:id])
-    render json: @user, status: :ok
+    render json: @user, include: [:groups, {groups: {include: [:posts]}}], status: :ok
   end
 
   def create
     @user = User.new(user_params)
     if @user.save
-    redirect_to @user
+    render json: @user
     end
   end
 
@@ -26,6 +27,17 @@ class UsersController < ApplicationController
     else
       render json: { errors: @user.errors }, status: :unprocessable_entity
     end
+  end
+
+  def verify
+    @user = {
+      id: @current_user[:id],
+      name: @current_user[:name],
+      email: @current_user[:email],
+      groups: @current_user.groups
+    }
+
+    render json: @user
   end
 
   private

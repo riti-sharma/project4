@@ -1,26 +1,26 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 
-export default (props) => (
-  <>
-    <div className="Loginform">
-      <h3>Log In Form</h3>
-      <form className="log">
-        <label htmlFor="name">Username</label>
-        <input type="text"
-          name="name"
-          id="name"
-        />
+const LoginForm = (props) => {
 
-        <label htmlFor="password">Password</label>
-        <input
-          type="password"
-          name="password"
-
-          id="password"
-        />
-
-        <input type="submit" value="Sign In!" />
+  return (
+    <div className="LoginForm">
+      <h2>Login</h2>
+      <hr />
+      <form onSubmit={(e) => {
+        e.preventDefault();
+        props.handleLogin();
+      }} >
+        <p>Username:</p>
+        <input name="name" type="text" value={props.formData.name} onChange={props.handleChange} />
+        <p>Password:</p>
+        <input name="password" type="password" value={props.formData.password} onChange={props.handleChange} />
+        <hr />
+        <button>Login</button>
+        <Link to="/register">Register</Link>
       </form>
     </div>
-  </>
-)
+  );
+}
+
+export default LoginForm;
