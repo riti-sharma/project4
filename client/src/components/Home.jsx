@@ -9,7 +9,7 @@ const Home = (props) => {
         <input
           name="name"
           type="text"
-          value={props.groupForm.subject}
+          value={props.groupForm.name}
           onChange={props.handleGroupFormChange}
         />
         <p>Description:</p>

@@ -7,7 +7,10 @@ const AllGroups = (props) => {
         <div className="aGroup" key={group.id}>
           <h3>{group.name}</h3>
           <p>{group.description}</p>
-          <button onClick={() => props.joinGroup(group)}>Join Group</button>
+          {group.users[0].id !== props.currentUser.id && <button onClick={() => props.joinGroup(group)}>Join Group</button>}
+          {group.users[0].id === props.currentUser.id && <button>Delete</button>}
+
+
         </div>
       ))}
     </div>

@@ -6,19 +6,18 @@
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
 
-user1 = User.create(name:"Riti", grade:"Junior")
-user2 = User.create(name:"Svet", grade:"Senior")
-user3 = User.create(name: "Erin", grade:"Freshman")
+user1 = User.create!(name:"Riti", grade:"Junior", email: 'riti@gmail.com', password: '123456')
+user2 = User.create!(name:"Svet", grade:"Senior", email: 'rit@gmail.com', password: '123456')
+user3 = User.create!(name: "Erin", grade:"Freshman", email: 'ri@gmail.com', password: '123456')
+user4 = User.create!(name: "David", grade:"Super Senior", email: 'r@gmail.com', password: '123456')
 
-group1 = Group.create(name:"Calculus 2", description:"Study group for calc 2 midterm")
-group2 = Group.create(name:"Geology", description:"Study group for geology labs")
+group1 = Group.create!(name:"Calculus 2", description:"Study group for calc 2 midterm")
+group2 = Group.create!(name:"Geology", description:"Study group for geology labs")
 
-post1 = Post.create(title:"Homework 2", message:"Does anyone have solutions to homework 2?")
+post1 = Post.create!(title:"Homework 2", message:"Does anyone have solutions to homework 2?", user: user1, group: group1)
 
 group1.users.push(user1)
 group2.users.push(user2)
 group1.users.push(user3)
 
-group2.posts.push(post1)
-user1.posts.push(post1)
 

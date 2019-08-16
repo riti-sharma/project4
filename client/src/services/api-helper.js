@@ -54,3 +54,23 @@ export const readAllPosts = async () => {
   const resp = await api.get('/posts');
   return resp.data
 }
+
+export const readPosts = async (groupId) => {
+  const resp = await api.get(`/groups/${groupId}/posts`)
+  return resp.data
+}
+
+export const createPost = async (groupId, data) => {
+  const resp = await api.post(`groups/${groupId}/posts`, { post: data })
+  return resp.data
+}
+
+export const removePostfromGroup = async (groupId, postId) => {
+  const resp = await api.delete(`/groups/${groupId}/posts/${postId}`);
+  return resp.data
+}
+
+export const updatePost = async (id, data) => {
+  const resp = await api.put(`/posts/${id}`, { post: data });
+  return resp.data
+}

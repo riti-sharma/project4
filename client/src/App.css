@@ -12,22 +12,37 @@
   font-family: 'Ubuntu Condensed', sans-serif;
 }
 
+#nav-bar a:hover {
+  color: rgb(28, 28, 128);
+  transition: color .5s;
+  font-size: 27px;
+}
+
+#nav-bar button:hover {
+  color: white;
+  background-color: rgb(28, 28, 128);
+  transition: color .5s;
+  transition: background-color .5s;
+  font-size: 23px;
+}
+
 #nav-bar {
   display: flex;
   width: 100%;
   justify-content: space-around;
   padding-top: 15px;
-  padding-bottom: 15px;
+  padding-bottom: 20px;
   background-color: rgb(84, 179, 230);
   position: fixed;
   top: 0;
+  z-index: 5;
 }
 
 /* Header Section */
 
 .header {
   display: flex;
-  margin-top: 30px;
+  margin-top: 90px;
   width: 100%;
   border-bottom: 1px solid rgb(28, 28, 128); 
   background-color: white;
@@ -47,8 +62,122 @@
 
 .header img {
   height: 190px;
-  padding-top: 30px; 
+
+  border-radius: 50%;
+  object-fit: cover;
+  animation-name: spin;
+  animation-duration: 5000ms;
+  animation-iteration-count: infinite;
+  animation-timing-function: linear; 
 }
+
+@keyframes spin {
+  from {
+      transform:rotate(0deg);
+  }
+  to {
+      transform:rotate(360deg);
+  }
+}
+
+
+/* LogIn Section */
+
+.LoginForm h2 {
+  font-family: 'Ubuntu Condensed', sans-serif;
+  background-color: rgb(84, 179, 230);
+  margin: 0 auto;
+  padding-top: 20px;
+  padding-bottom: 20px; 
+  color: white;
+  font-size: 28px;
+}
+
+.LoginForm form {
+  display: inline-block;
+  justify-content: center;
+  background-color: rgb(195, 234, 247);
+  margin-top: 25px; 
+  padding-left: 85px;
+  padding-right: 85px;
+  padding-bottom: 25px; 
+  box-shadow: 10px 10px 20px 1px rgba(49,61,105,1);
+
+}
+
+.LoginForm button {
+  display: flex;
+  text-decoration: none;
+  margin-top: 15px; 
+  width: 150px; 
+  padding: 5px;
+  color: rgba(49,61,105,1);
+  font-weight: 600;
+  
+}
+
+.LoginForm p{
+  font-family: 'Ubuntu Condensed', sans-serif;
+  font-size: 20px;
+  font-weight: 600;
+  color: rgba(49,61,105,1);
+}
+
+.LoginForm input {
+  padding: 4px;
+  padding-left: 15px;
+  padding-right: 15px;
+}
+
+
+/* Register Form */
+
+.RegisterForm h2 {
+  font-family: 'Ubuntu Condensed', sans-serif;
+  background-color: rgb(84, 179, 230);
+  margin: 0 auto;
+  padding-top: 20px;
+  padding-bottom: 20px; 
+  color: white;
+  font-size: 28px;
+}
+
+.RegisterForm form {
+  display: inline-block;
+  justify-content: center;
+  background-color: rgb(195, 234, 247);
+  margin-top: 25px; 
+  padding-left: 85px;
+  padding-right: 85px;
+  padding-bottom: 25px; 
+  box-shadow: 10px 10px 20px 1px rgba(49,61,105,1);
+
+}
+
+.RegisterForm button {
+  display: flex;
+  text-decoration: none;
+  margin-top: 15px; 
+  width: 150px; 
+  padding: 5px;
+  color: rgba(49,61,105,1);
+  font-weight: 600;
+  
+}
+
+.RegisterForm p{
+  font-family: 'Ubuntu Condensed', sans-serif;
+  font-size: 20px;
+  font-weight: 600;
+  color: rgba(49,61,105,1);
+}
+
+.RegisterForm input {
+  padding: 4px;
+  padding-left: 15px;
+  padding-right: 15px;
+}
+
 
 
 /* All Groups Section */
@@ -70,10 +199,12 @@
 }
 
 .aGroup {
-  background-color: lightblue;
+  background-color: rgb(195, 234, 247);
   margin-left: 35%;
   margin-right: 35%;
   padding-bottom: 15px;
+  box-shadow: 10px 10px 20px -3px rgba(49,61,105,1);
+
   
 }
 
@@ -85,25 +216,33 @@
 .homeForm form {
   display: inline-block;
   background-color: rgb(84, 179, 230);
-  padding-left: 45px;
-  padding-right: 45px;
+  padding-left: 85px;
+  padding-right: 85px;
   margin-top: 15px;
+  box-shadow: 10px 10px 20px 1px rgba(49,61,105,1);
+
 }
 
 .homeForm p {
   font-family: 'Ubuntu Condensed', sans-serif;
-  color: white;
+  color: rgb(28, 28, 128);
+  font-weight: 600;
   font-size: 20px;
+  padding-top: 15px;
+  font-size: 23px;
 }
 
 .homeForm input {
-  padding: 7px;
+  padding: 4px;
+  padding-left: 15px;
+  padding-right: 15px;
 }
 
 .homeForm button {
   display: flex;
-  margin-top: 10px;
+  margin-top: 18px;
   margin-bottom: 35px;
+  color: rgb(28, 28, 128)
 }
 
 .homeForm h3 {
@@ -113,8 +252,70 @@
 
 }
 
+/* MyGroup Section */
+.myGroup {
+  background-color: rgb(195, 234, 247);
+  margin-left: 35%;
+  margin-right: 35%;
+  padding-bottom: 15px;
+  box-shadow: 10px 10px 20px -3px rgba(49,61,105,1);
+}
+
+.myGroup h3 {
+  padding-top: 15px; 
+  font-family: 'Ubuntu Condensed', sans-serif;
+  color: rgb(28, 28, 128);
+  font-size: 30px;
+}
+
 
 /* View Group Section */
 .grouptitle {
-  background-color: lightblue;
+  background-color: rgb(195, 234, 247);
+  margin-left: 35%;
+  margin-right: 35%;
+  padding-bottom: 15px;
+  box-shadow: 10px 10px 20px -3px rgba(49,61,105,1);
+
+}
+
+.grouptitle h3{
+  font-family: 'Ubuntu Condensed', sans-serif;
+  font-size: 30px; 
+  margin-top: 35px; 
+  padding-top: 25px; 
+  color: rgb(28, 28, 128);
+}
+
+
+/* Comment Form */
+
+.currentGroup form {
+  display: inline-block;
+  justify-content: center;
+  text-align: center;
+  align-content: center;
+  background-color: rgb(195, 234, 247);
+  margin-top: 30px; 
+  padding: 20px;
+  padding-top: 10px; 
+  font-family: 'Ubuntu Condensed', sans-serif;
+  font-size: 19px;
+}
+
+.currentGroup button {
+  display: flex;
+  padding-left: 20px;
+  padding-right: 20px;
+  margin-top: 10px; 
+}
+
+.currentGroup form input {
+  padding-top: 5px;
+}
+
+/* Posts Section */
+
+.Posts {
+  
 }

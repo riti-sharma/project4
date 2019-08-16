@@ -9,7 +9,7 @@ import MyGroups from './components/MyGroups';
 import AllGroups from './components/AllGroups';
 import Header from './components/Header';
 import CurrentGroup from './components/CurrentGroup'
-import { loginUser, createGroup, registerUser, joinGroups, verifyUser, readAllGroups, removeGroupFromUser } from './services/api-helper';
+import { loginUser, createGroup, registerUser, joinGroups, verifyUser, readAllGroups, readPosts, removeGroupFromUser, createPost } from './services/api-helper';
 
 class App extends Component {
   constructor(props) {
@@ -34,7 +34,7 @@ class App extends Component {
       groupForm: {
         name: "",
         description: ""
-      }
+      },
     }
   }
 
@@ -133,10 +133,8 @@ class App extends Component {
         description: ""
       }
     }))
-  }
-
-  newPost = async (e) => {
-    e.preventDefault();
+    debugger;
+    this.joinGroup(group)
   }
 
   handleGroupFormChange = (e) => {
@@ -188,6 +186,7 @@ class App extends Component {
           <AllGroups
             groups={this.state.groups}
             joinGroup={this.joinGroup}
+            currentUser={this.state.currentUser}
           />
         )} />
 
@@ -204,8 +203,10 @@ class App extends Component {
             const groupId = props.match.params.id;
             const currentGroup = this.state.currentUser.groups.find(group => group.id === parseInt(groupId))
             return < CurrentGroup
+              groupId={groupId}
               getGroupInfo={this.getGroupInfo}
               currentGroup={currentGroup}
+              newPost={this.newPost}
             />
           }
         }} />
