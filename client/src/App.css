@@ -319,3 +319,51 @@
 .Posts {
   
 }
+
+/* Footer Section */
+
+.footer img {
+  height: 100px;
+  width: 100px;
+  border-radius: 50%;
+  object-fit: cover;
+  margin-top: 20px; 
+}
+
+.footer {
+  margin-top: 90px; 
+  border-top: 1px solid rgb(28, 28, 128); 
+
+
+}
+
+.footer p, small {
+  font-family: 'Ubuntu Condensed', sans-serif;
+
+}
+
+/* Posts Section */
+
+.Posts button{
+  display: inline;
+}
+
+.currentGroup h3 {
+  font-size: 25px; 
+  color: rgb(28, 28, 128);
+  font-family: 'Ubuntu Condensed', sans-serif;
+  padding-top: 45px; 
+}
+
+.apost {
+  background-color: rgb(28, 28, 128); 
+  font-family: 'Ubuntu Condensed', sans-serif;
+  color: white;
+  margin-left: 35%;
+  margin-right: 35%;
+  padding-bottom: 15px;
+  margin-bottom: 25px; 
+  padding-top: 8px;
+  box-shadow: 10px 10px 20px -3px rgba(49,61,105,1);
+ 
+}

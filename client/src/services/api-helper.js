@@ -20,7 +20,6 @@ export const loginUser = async (loginData) => {
 
 export const registerUser = async (registerData) => {
   const resp = await api.post('/users/', { user: registerData });
-  debugger;
   return resp.data
 }
 
@@ -72,5 +71,10 @@ export const removePostfromGroup = async (groupId, postId) => {
 
 export const updatePost = async (id, data) => {
   const resp = await api.put(`/posts/${id}`, { post: data });
+  return resp.data
+}
+
+export const removeGroup = async (id) => {
+  const resp = await api.delete(`/groups/${id}`);
   return resp.data
 }

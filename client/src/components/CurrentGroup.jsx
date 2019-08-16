@@ -75,7 +75,7 @@ export default class CurrentGroup extends Component {
           <h3>{this.props.currentGroup.name}</h3>
           <p>{this.props.currentGroup.description}</p>
         </div>
-
+        <h3>Posts</h3>
         <div className="Posts">
           {this.state.posts && this.state.posts.map(post => (
             <div key={post.id}>
@@ -103,15 +103,22 @@ export default class CurrentGroup extends Component {
                 </form>
                 :
                 <>
-                  <h4>{post.title}</h4>
-                  <p>{post.message}</p>
-                  <button onClick={() => this.handlePostDelete(post.id)}>Delete</button>
-                  <button onClick={() => {
-                    this.setState({
-                      isEditing: post.id,
-                      putForm: post
-                    })
-                  }}>Edit</button>
+                  <div className="apost">
+                    {post.user_id === this.props.currentUser.id && <h4>{this.props.currentUser.name}: </h4>}
+                    <h4>{post.title}</h4>
+                    <p>{post.message}</p>
+                    <div key={post.id}>
+                      {post.user_id === this.props.currentUser.id &&
+                        <button onClick={() => this.handlePostDelete(post.id)}>Delete</button>}
+                      {post.user_id === this.props.currentUser.id &&
+                        <button onClick={() => {
+                          this.setState({
+                            isEditing: post.id,
+                            putForm: post
+                          })
+                        }}>Edit</button>}
+                    </div>
+                  </div>
                 </>
               }
             </div>

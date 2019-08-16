@@ -8,8 +8,9 @@ import Nav from './components/Nav';
 import MyGroups from './components/MyGroups';
 import AllGroups from './components/AllGroups';
 import Header from './components/Header';
+import Footer from './components/Footer';
 import CurrentGroup from './components/CurrentGroup'
-import { loginUser, createGroup, registerUser, joinGroups, verifyUser, readAllGroups, readPosts, removeGroupFromUser, createPost } from './services/api-helper';
+import { loginUser, createGroup, registerUser, joinGroups, verifyUser, readAllGroups, readPosts, removeGroupFromUser, createPost, removeGroup } from './services/api-helper';
 
 class App extends Component {
   constructor(props) {
@@ -61,11 +62,11 @@ class App extends Component {
         groups: [...prevState.currentUser.groups, join]
       }
     }))
+    this.props.history.push("/mygroups")
   }
 
   handleLogin = async () => {
     const userData = await loginUser(this.state.formData);
-    debugger;
     this.setState({
       currentUser: userData
     })
@@ -76,6 +77,10 @@ class App extends Component {
   handleRegister = async (e) => {
     e.preventDefault();
     await registerUser(this.state.formData);
+    const userData = await loginUser(this.state.formData);
+    this.setState({
+      currentUser: userData
+    })
     this.handleLogin();
     this.props.history.push("/home")
   }
@@ -122,19 +127,33 @@ class App extends Component {
     }))
   }
 
+  handleDelete = async (groupId) => {
+    await removeGroup(groupId);
+    this.setState(prevState => ({
+      groups: prevState.groups.filter(group => group.id !== parseInt(groupId)),
+      currentUser: {
+        ...prevState.currentUser,
+        groups: prevState.currentUser.groups.filter(group => group.id !== parseInt(groupId))
+      }
+    }))
+  }
+
   newGroup = async (e) => {
     e.preventDefault();
     const group = await createGroup(this.state.groupForm);
     this.setState(prevState => ({
+      currentUser: {
+        ...prevState.currentUser,
+        groups: [...prevState.currentUser.groups, group]
+      },
       groups: [...prevState.groups, group],
       mygroups: [...prevState.mygroups, group],
       groupForm: {
-        subject: "",
+        name: "",
         description: ""
       }
     }))
-    debugger;
-    this.joinGroup(group)
+    this.props.history.push("/mygroups")
   }
 
   handleGroupFormChange = (e) => {
@@ -154,8 +173,10 @@ class App extends Component {
   render() {
     return (
       <div className="App">
-        <Nav
-          handleLogout={this.handleLogout} />
+        {this.state.currentUser !== null &&
+          < Nav
+            handleLogout={this.handleLogout} />
+        }
         <Header />
 
         <Route exact path="/home" render={() => (
@@ -184,6 +205,7 @@ class App extends Component {
 
         <Route exact path="/allgroups" render={() => (
           <AllGroups
+            handleDelete={this.handleDelete}
             groups={this.state.groups}
             joinGroup={this.joinGroup}
             currentUser={this.state.currentUser}
@@ -195,6 +217,7 @@ class App extends Component {
             mygroups={this.state.mygroups}
             handleGroupDelete={this.handleGroupDelete}
             currentUser={this.state.currentUser}
+            handleDelete={this.handleDelete}
           />
         )} />
 
@@ -207,10 +230,11 @@ class App extends Component {
               getGroupInfo={this.getGroupInfo}
               currentGroup={currentGroup}
               newPost={this.newPost}
+              currentUser={this.state.currentUser}
             />
           }
         }} />
-
+        <Footer />
       </div>
     );
   }
