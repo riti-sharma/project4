@@ -30,11 +30,13 @@ class UsersController < ApplicationController
   end
 
   def verify
+    @groups = Group.all
     @user = {
       id: @current_user[:id],
       name: @current_user[:name],
       email: @current_user[:email],
-      groups: @current_user.groups
+      groups: @current_user.groups,
+      myGroups: @groups.select{|group| group.users[0].id === @current_user.id}
     }
 
     render json: @user

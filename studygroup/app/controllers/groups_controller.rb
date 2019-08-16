@@ -1,4 +1,6 @@
 class GroupsController < ApplicationController
+  before_action :authorize_request, only: [:create]
+
 
   def index
     @groups = Group.all
@@ -8,14 +10,13 @@ class GroupsController < ApplicationController
   def show
     @user = User.find(params[:user_id])
     @group = Group.find(params[:id])
-    render json: @group, include: :user, status: :ok
+    render json: @group, include: :users, status: :ok
   end
 
   def create
     @group = Group.new(group_params)
-    if @group.save
-      render json: @group
-    end
+    @current_user.groups << @group
+    render json: @group, include: :users
   end
   
   def update
