@@ -9,7 +9,6 @@ Bundler.require(*Rails.groups)
 module Studygroup
   class Application < Rails::Application
     config.api_only = true
-    config.assets.initialize_on_precompile = false
     # Initialize configuration defaults for originally generated Rails version.
     config.load_defaults 5.2
 
